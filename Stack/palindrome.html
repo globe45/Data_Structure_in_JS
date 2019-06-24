@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var letters=[];
+        var words="racecar";
+        var reword="";
+        for(var i=0;i<words.length;i++){
+            letters.push(words[i]);
+        }
+        for(var i=0;i<words.length;i++){
+            reword+=letters.pop();
+        }
+        if(words===reword){
+            console.log(words+" is palindrome number");
+        }
+        else{
+            console.log(words+"is not palindrome number");
+        }
+        
+    </script>
+
+</body>
+</html>

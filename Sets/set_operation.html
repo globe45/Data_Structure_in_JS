@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //create myset class
+        var mySet=function(){
+
+      //take an array or collection
+      this.collection=[];
+
+
+      //this method is used to check that given element are present in collection or not , if present is will return  the true.
+      this.has=function(element){
+          return this.collection.indexOf(element) !== -1;
+      }
+
+
+
+      //adding elements into the set 
+      this.add= function(elements)
+      {
+          if(!this.has(elements)){
+              this.collection.push(elements);
+              return true;
+          }
+          else{
+            return false;
+          }
+      }
+       
+       //removing elements form the sets
+
+       this.remove=function(elements){
+           if(this.has(elements)){
+               var index= this.collection.indexOf(elements)
+               this.collection.splice(index,1);
+               return true;
+           }
+           else{
+               return false;
+           }
+       }
+       //finding the size of the sets
+       this.size=function(){
+          
+           return this.collection.length;
+       }
+
+       this.values= function(){
+           return this.collection;
+       }
+
+       //union of two sets
+       this.union =function(otherSet){
+           unionSet= new mySet();
+           firstSet=this.values();
+           secondset= otherSet.values();
+           firstSet.forEach( function(e){
+               unionSet.add(e);
+           }
+           );
+           secondset.forEach(element=>{
+               unionSet.add(element);
+           })
+         return unionSet;
+       }
+
+
+       //inersectiion of sets
+       this.intersection=function(otherSet){
+           IntersectionSet=new mySet();
+           firstSet=this.values();
+           secondset= otherSet.values();
+           firstSet.forEach(element=>{
+               if(otherSet.has(element)){
+                   IntersectionSet.add(element)
+               }
+           })
+           return IntersectionSet;
+
+       }
+       //difference the two set setA- setB
+       this.difference= function(otherSet){
+        Difference=new mySet();
+        firstSet= this.values();
+        firstSet.forEach(element=>{
+            if(!otherSet.has(element)){
+                Difference.add(element);
+            }
+        })
+        return  Difference;
+
+
+       }
+       this.subset=function(otherSet){
+           firstSet=this.values();
+           return firstSet.every(function(value){
+               return otherSet.has(value)
+           });
+
+
+       }
+       this.display=function(){
+           return this.collection;
+       }
+
+
+        }
+        var myset= new mySet();
+        console.log(myset.add(1));
+        console.log(myset.add(1));console.log(myset.add(2));console.log(myset.add(2));//console.log(myset.remove(1));
+        console.log(myset.size());
+        console.log("the end part1");
+        myset.collection.forEach(element =>{
+            console.log(element);
+        })
+        var myset2=new mySet();
+        myset2.add(3);
+        myset2.add(2);
+        console.log("....{1,2}........union.........{3,2}........");
+        var result=new mySet();
+        result=myset2.union(myset);
+         result.collection.forEach(element =>{
+             console.log(element);
+         })
+        console.log("....{1,2}........intersection.........{3,2}........");
+        var result=new mySet();
+        result=myset2.intersection(myset);
+         result.collection.forEach(element =>{
+             console.log(element);
+
+         })
+
+         console.log("....{1,2}........difference.........{3,2}........");
+        var result=new mySet();
+        result=myset.difference(myset2);
+         result.collection.forEach(element =>{
+             console.log(element);
+
+         })
+    
+    </script>
+</body>
+</html>

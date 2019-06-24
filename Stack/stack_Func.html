@@ -1,0 +1,49 @@
+<!-- //stack
+// function:- push(-), pop(), peek(), length
+
+//create the stack  -->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var stack = function(){
+            this.count = 0;
+            this.stroage=[];
+            this.push = function(value){
+                this.stroage[this.count]= value;
+                this.count++;
+        
+        
+            }
+            this.pop=function(){
+                if(this.count === 0){
+                    return undefined;
+                }
+                this.count--
+                var result =this.stroage[this.count];
+                delete this.stroage[this.count];
+                return result;
+            }
+            this.size= function(){
+                return this.count;
+            }
+            this.peek = function(){
+                return this.stroage[this.count-1];
+            }
+        }
+        var mystack = new stack();
+        mystack.push(1);
+        mystack.push(2);
+        console.log(mystack.peek());
+        console.log(mystack.pop());
+        console.log(mystack.peek());
+        </script>
+        
+</body>
+</html>
