@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Priority Queue</title>
+</head>
+<body>
+    <script>
+      var Priority= function(){
+          var collection=[];
+          this.isEmpty=function(){
+              return (collection.length===0);
+          }
+          this.enqueue =function(element){
+              if(this.isEmpty()){
+                  console.log("1st elment")
+                  collection.push(element);
+              }
+              else{
+                  var added=false;
+                  for(var i=0;i<collection.length;i++){
+                      if(element[1] < collection[i][1]){
+                          collection.splice(i,0,element);
+                          added=true;
+                          break;
+                      }
+                  }
+                  if(!added){
+                      collection.push(element);
+                  }
+              }
+
+          }
+          this.dequeue=function(element){
+              var value=collection.shift();
+              return value[0];
+          }
+          this.print= function(){
+              console.log(collection);
+          }
+          this.size=function(){
+              return collection.length;
+          }
+      }
+      var myPriority=new Priority();
+      myPriority.enqueue(['sangam',2])
+      myPriority.enqueue(['shahshdja',3]);
+      myPriority.enqueue(['djhjaa',1]);
+      myPriority.print();
+      myPriority.dequeue();
+      myPriority.print(); 
+    </script>
+</body>
+</html>
